@@ -744,6 +744,7 @@ namespace lime {
 	void SDLWindow::Resize (int width, int height) {
 
 		SDL_SetWindowSize (sdlWindow, width, height);
+		SDL_RenderSetLogicalSize(sdlRenderer, width, height);
 
 	}
 
