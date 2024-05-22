@@ -42,6 +42,11 @@ class AL
 	public static inline var SEC_OFFSET:Int = 0x1024;
 	public static inline var SAMPLE_OFFSET:Int = 0x1025;
 	public static inline var BYTE_OFFSET:Int = 0x1026;
+	public static inline var DEVICE_CLOCK_SOFT:Int = 0x1600;
+	public static inline var DEVICE_LATENCY_SOFT:Int = 0x1601;
+	public static inline var DEVICE_CLOCK_LATENCY_SOFT:Int = 0x1602;
+	public static inline var SEC_OFFSET_LATENCY_SOFT:Int = 0x1201;
+	public static inline var SEC_OFFSET_CLOCK_SOFT:Int = 0x1203;
 	public static inline var SOURCE_TYPE:Int = 0x1027;
 	public static inline var STATIC:Int = 0x1028;
 	public static inline var STREAMING:Int = 0x1029;
