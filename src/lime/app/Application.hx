@@ -15,6 +15,7 @@ import lime.ui.Touch;
 import lime.ui.Window;
 import lime.ui.WindowAttributes;
 import lime.utils.Preloader;
+import haxe.Int64;
 
 /**
 	The Application class forms the foundation for most Lime projects.
