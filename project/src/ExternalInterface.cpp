@@ -2669,6 +2669,19 @@ namespace lime {
 
 	}
 
+	int lime_sdl_get_ticks () {
+
+		return System::GetTicks();
+
+	}
+
+
+	HL_PRIM int HL_NAME(hl_sdl_get_ticks) () {
+
+		return System::GetTicks();
+
+	}
+
 
 	HL_PRIM bool HL_NAME(hl_system_get_allow_screen_timeout) () {
 
