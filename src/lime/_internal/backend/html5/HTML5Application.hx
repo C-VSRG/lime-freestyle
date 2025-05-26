@@ -412,12 +412,12 @@ class HTML5Application
 
 			var keyCode = cast convertKeyCode(event.keyCode != null ? event.keyCode : event.which);
 			var modifier = (event.shiftKey ? (KeyModifier.SHIFT) : 0) | (event.ctrlKey ? (KeyModifier.CTRL) : 0) | (event.altKey ? (KeyModifier.ALT) : 0) | (event.metaKey ? (KeyModifier.META) : 0);
-
+			var timestamp = haxe.Int64.fromFloat(event.timeStamp);
 			if (event.type == "keydown")
 			{
 				parent.window.onKeyDown.dispatch(keyCode, modifier);
-
-				if (parent.window.onKeyDown.canceled && event.cancelable)
+				parent.window.onKeyDownPrecise.dispatch(keyCode, modifier, timestamp);
+				if ((parent.window.onKeyDown.canceled || parent.window.onKeyDownPrecise.canceled) && event.cancelable)
 				{
 					event.preventDefault();
 				}
@@ -425,8 +425,8 @@ class HTML5Application
 			else
 			{
 				parent.window.onKeyUp.dispatch(keyCode, modifier);
-
-				if (parent.window.onKeyUp.canceled && event.cancelable)
+				parent.window.onKeyUpPrecise.dispatch(keyCode, modifier, timestamp);
+				if ((parent.window.onKeyUp.canceled || parent.window.onKeyUpPrecise.canceled) && event.cancelable)
 				{
 					event.preventDefault();
 				}
@@ -615,13 +615,17 @@ class HTML5Application
 									default: continue;
 								}
 
+								var timestamp = haxe.Int64.fromFloat(js.Browser.window.performance.now());
+
 								if (value > 0)
 								{
 									gamepad.onButtonDown.dispatch(button);
+									gamepad.onButtonDownPrecise.dispatch(button, timestamp);
 								}
 								else
 								{
 									gamepad.onButtonUp.dispatch(button);
+									gamepad.onButtonUpPrecise.dispatch(button, timestamp);
 								}
 							}
 						}
